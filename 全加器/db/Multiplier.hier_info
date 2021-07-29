@@ -1,0 +1,115 @@
+|Multiplier2x3
+m[0] => m[0].IN1
+m[1] => m[1].IN2
+q[0] => q[0].IN1
+q[1] => q[1].IN1
+q[2] => q[2].IN2
+p[0] << comb.DB_MAX_OUTPUT_PORT_TYPE
+p[1] << MultiplierFirstRow:one.s
+p[2] << MultiplierRemainRow:three.s
+p[3] << MultiplierRemainRow:four.s
+p[4] << MultiplierRemainRow:four.cOut
+
+
+|Multiplier2x3|MultiplierFirstRow:one
+m[0] => comb.IN0
+m[0] => mOut.DATAIN
+m[1] => comb.IN0
+q[0] => comb.IN1
+q[0] => qOut[0].DATAIN
+q[1] => comb.IN1
+q[1] => qOut[1].DATAIN
+cIn => cIn.IN1
+qOut[0] <= q[0].DB_MAX_OUTPUT_PORT_TYPE
+qOut[1] <= q[1].DB_MAX_OUTPUT_PORT_TYPE
+cOut <= Adder1Bit:FA.cout
+mOut <= m[0].DB_MAX_OUTPUT_PORT_TYPE
+s <= Adder1Bit:FA.sum
+
+
+|Multiplier2x3|MultiplierFirstRow:one|Adder1Bit:FA
+a => link1.IN0
+a => link2.IN0
+b => link1.IN1
+b => link2.IN1
+cin => comb.IN1
+cin => link3.IN1
+cout <= comb.DB_MAX_OUTPUT_PORT_TYPE
+sum <= comb.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Multiplier2x3|MultiplierFirstRow:two
+m[0] => comb.IN0
+m[0] => mOut.DATAIN
+m[1] => comb.IN0
+q[0] => comb.IN1
+q[0] => qOut[0].DATAIN
+q[1] => comb.IN1
+q[1] => qOut[1].DATAIN
+cIn => cIn.IN1
+qOut[0] <= q[0].DB_MAX_OUTPUT_PORT_TYPE
+qOut[1] <= q[1].DB_MAX_OUTPUT_PORT_TYPE
+cOut <= Adder1Bit:FA.cout
+mOut <= m[0].DB_MAX_OUTPUT_PORT_TYPE
+s <= Adder1Bit:FA.sum
+
+
+|Multiplier2x3|MultiplierFirstRow:two|Adder1Bit:FA
+a => link1.IN0
+a => link2.IN0
+b => link1.IN1
+b => link2.IN1
+cin => comb.IN1
+cin => link3.IN1
+cout <= comb.DB_MAX_OUTPUT_PORT_TYPE
+sum <= comb.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Multiplier2x3|MultiplierRemainRow:three
+pp => pp.IN1
+m => comb.IN0
+m => mOut.DATAIN
+q => comb.IN1
+q => qOut.DATAIN
+cIn => cIn.IN1
+qOut <= q.DB_MAX_OUTPUT_PORT_TYPE
+cOut <= Adder1Bit:FA.cout
+mOut <= m.DB_MAX_OUTPUT_PORT_TYPE
+s <= Adder1Bit:FA.sum
+
+
+|Multiplier2x3|MultiplierRemainRow:three|Adder1Bit:FA
+a => link1.IN0
+a => link2.IN0
+b => link1.IN1
+b => link2.IN1
+cin => comb.IN1
+cin => link3.IN1
+cout <= comb.DB_MAX_OUTPUT_PORT_TYPE
+sum <= comb.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Multiplier2x3|MultiplierRemainRow:four
+pp => pp.IN1
+m => comb.IN0
+m => mOut.DATAIN
+q => comb.IN1
+q => qOut.DATAIN
+cIn => cIn.IN1
+qOut <= q.DB_MAX_OUTPUT_PORT_TYPE
+cOut <= Adder1Bit:FA.cout
+mOut <= m.DB_MAX_OUTPUT_PORT_TYPE
+s <= Adder1Bit:FA.sum
+
+
+|Multiplier2x3|MultiplierRemainRow:four|Adder1Bit:FA
+a => link1.IN0
+a => link2.IN0
+b => link1.IN1
+b => link2.IN1
+cin => comb.IN1
+cin => link3.IN1
+cout <= comb.DB_MAX_OUTPUT_PORT_TYPE
+sum <= comb.DB_MAX_OUTPUT_PORT_TYPE
+
+
